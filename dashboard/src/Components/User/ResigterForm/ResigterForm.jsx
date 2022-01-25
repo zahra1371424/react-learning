@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useNavigate  } from 'react-router-dom';
+import { UserContext } from '../../../contexts/userContext';
 
-export default function ResigterForm(props) {
+export default function ResigterForm() {
   const navigate  = useNavigate ();
-  const userItem = {}
+  const userItem = {};
+  const user = useContext(UserContext);
   const handleChange = (e) => {
     userItem[e.target.name] = e.target.value;
   }
   const submit = () => {
-    props.setUserInfo(userInfo => [...userInfo, {firstName:userItem.firstName, lastName: userItem.lastName, email: userItem.email}]);
-    navigate('/');
+    user.setUserInfo(userInfo => [...userInfo, {firstName:userItem.firstName, lastName: userItem.lastName, email: userItem.email}]);
+    navigate('/user');
   }
   return <>
    <div style={{display:"flex", flexDirection: 'column', width: "200px"}}>

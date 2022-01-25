@@ -1,25 +1,40 @@
-import React , { useEffect, useState }from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate,
+  Outlet
 } from "react-router-dom";
-import ResigterForm from "./Components/ResigterForm/ResigterForm";
+import Home from "./Components/Home/Home";
+import PageNotFound from "./Components/PageNotFound/PageNotFound";
+import Add from "./Components/Product/Add/Add";
+import List from "./Components/Product/List/List";
+import Product from "./Components/Product/Product";
+import ResigterForm from "./Components/User/ResigterForm/ResigterForm";
 import User from "./Components/User/User";
-import UserList from "./Components/UserList/UserList";
+import UserList from "./Components/User/UserList/UserList";
 
 function App() {
-  const [userInfo, setUserInfo] = useState([])
-
   return (
-    <Router>
-      <Routes>
-        <Route path="user" element={<User />}>
-          <Route path="list"  element={ <UserList userInfo = {userInfo}/>} />
-          <Route path="form" element={ <ResigterForm userInfo={userInfo} setUserInfo={setUserInfo}/>} />
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          {/* <Route path="/" element={<Navigate to="/" />}/> */}
+          <Route path="/" element={<Home/>}/>
+          <Route path="/user" element={<User />}>
+            <Route index element={ <UserList/>} />
+            <Route path="form" element={ <ResigterForm/>} />
+          </Route>
+          <Route path="/product" element={<Product />}>
+            <Route index element={ <List/>} />
+            <Route path="add" element={ <Add/>} />
+          </Route>
+          <Route path="*" element={<PageNotFound/>}/>
+        </Routes>
+      </Router>
+      <Outlet />
+    </>
   );
 }
 
