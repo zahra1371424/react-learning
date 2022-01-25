@@ -4,10 +4,10 @@ export default function User() {
   return <>
     <ul>
       <li>
-        <Link to="/">User List</Link>
+        <Link to="/user/list">User List</Link>
       </li>
       <li>
-        <Link to="/form">Form</Link>
+        <Link to="/user/form">Form</Link>
       </li>
     </ul>
     <hr />

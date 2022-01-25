@@ -10,20 +10,16 @@ import UserList from "./Components/UserList/UserList";
 
 function App() {
   const [userInfo, setUserInfo] = useState([])
- 
 
   return (
-    <div className="App">
-      <Router>
-      <div>
-        <User/> 
-        <Routes>
-          <Route path="/" element={ <UserList userInfo = {userInfo}/>}></Route>
-          <Route path="/form" element={ <ResigterForm userInfo={userInfo} setUserInfo={setUserInfo}/>}></Route>
-        </Routes>
-      </div>
+    <Router>
+      <Routes>
+        <Route path="user" element={<User />}>
+          <Route path="list"  element={ <UserList userInfo = {userInfo}/>} />
+          <Route path="form" element={ <ResigterForm userInfo={userInfo} setUserInfo={setUserInfo}/>} />
+        </Route>
+      </Routes>
     </Router>
-    </div>
   );
 }
 
