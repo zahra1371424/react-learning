@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../../contexts/userContext';
+import React from 'react';
+//import { UserContext } from '../../../contexts/userContext';
+import { useStore } from '../../../Store/Store';
 
 export default function UserList() {
-  const user = useContext(UserContext);
+  //const user = useContext(UserContext);
+  const [state] = useStore();
+  const { userInfo } = state;
   return <> 
-    {user.userInfo && user.userInfo.length ?
-      user.userInfo.map((item, index) => (
+    {userInfo && userInfo.length ?
+      userInfo.map((item, index) => (
         <>
         <div key={index}>
           <span>{index + 1}: </span> 

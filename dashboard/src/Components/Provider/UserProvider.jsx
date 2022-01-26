@@ -2,7 +2,7 @@ import { UserContext } from "../../contexts/userContext";
 import React, { useEffect, useState } from 'react';
 
 const UserProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState([])
+  const [userInfo, setUserInfo] = useState([]);
   return (
     <UserContext.Provider value={{ userInfo, setUserInfo }}>
       {children}
